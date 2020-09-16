@@ -1,0 +1,13 @@
+!
+! Just a simple Cisco IOS Configuration
+hostname {{hostname}}
+ip domain-name {{domain_name}}
+
+interface loopback 0
+description management_ip
+ip address {{management_ip}} 255.255.255.255
+!
+{% for vlan in vlans %}
+vlan {{ vlan.id }}
+ name {{ vlan.name }}
+{% endfor %}
